@@ -1,0 +1,3 @@
+#!/bin/sh
+
+podman run --publish 4567:4567 -it app

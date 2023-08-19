@@ -1,0 +1,17 @@
+FROM debian:latest
+
+RUN apt-get update
+RUN apt-get install --assume-yes \
+  ruby \
+  imagemagick \
+  zip
+  # ruby-rmagick
+  # ruby-zip
+RUN gem install --no-document \
+  sinatra
+# digest-crc  # for digest/crc32
+
+COPY app.rb split.sh /app
+WORKDIR /app
+EXPOSE 4567
+CMD ruby app.rb
