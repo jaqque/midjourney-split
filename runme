@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ -d out ] || mkdir out
+podman run -v $PWD/out:/out imagemagick "$1"
