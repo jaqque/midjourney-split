@@ -126,8 +126,7 @@ div.container {
 </style>
 </head>
 <body>
-<img src="https://whimberrypress.com/wp-content/uploads/2023/08/ninja-slice.png" alt="ninja-slice" width="512" height="512">
-<img src="https://whimberrypress.com/wp-content/uploads/2023/08/Ninja-Slice-Ultimate.gif" alt="ninja-slice" width="1258" height="250">
+<img src="ninja-slice-header-v<% rand(1..3) %>.png" alt="Ninja Slice Ultimate" width="940" height="180">
 
 <h2>Enter your MidJourney link below.</h2>
 
