@@ -140,6 +140,37 @@ div.container {
   </form>
 
 </div>
+Introducing "Ninja Slice Ultimate" - Your Ultimate Image Enhancement Solution!
+
+Unlock the power of professional image processing with Ninja Slice Ultimate, the cutting-edge online software tool designed to transform your Midjourney 4-up images into stunning high-resolution masterpieces. Elevate your visuals effortlessly and prepare them for top-quality printing like never before.
+
+Features:
+
+Precise Slicing: Ninja Slice Ultimate effortlessly divides your Midjourney 4-up images into four individual, finely crafted segments, preserving every detail with pinpoint precision.
+
+Seamless Upscaling: Witness the magic of advanced upscaling technology as Ninja Slice Ultimate enlarges each segmented image while maintaining exquisite clarity and sharpness. Your images will be ready for large-scale printing without compromise.
+
+Optimized for Printing: With Ninja Slice Ultimate, you can rest assured that your images are primed for the highest quality print results. Every segment is enriched with vibrant colors and lifelike details, ensuring your artwork comes to life on paper.
+
+User-Friendly Experience: Enjoy a streamlined process that makes image enhancement accessible to everyone. With its intuitive interface, Ninja Slice Ultimate lets you effortlessly upload, process, and download your perfected images in moments.
+
+Automatic Zipping: Your convenience is our priority. Ninja Slice Ultimate automatically compresses your processed images into a convenient zip file, ensuring a quick and efficient download experience.
+
+Ready for Action: Ninja Slice Ultimate delivers the results directly to you. Once your images are processed, they are immediately ready for download via your browser, saving you time and effort.
+
+Embrace the transformational capabilities of Ninja Slice Ultimate and witness your Midjourney 4-up images evolve into captivating artworks, perfectly tailored for printing. Elevate your imagery with ease and precision. Get started today - it's time to bring your visuals to life like never before!
+
+Notice of Non-Affiliation and Disclaimer
+
+We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Midjourney, or any of its subsidiaries or its affiliates. The official Midjourney website can be found at https://www.midjourney.com/.
+
+The name Midjourney as well as related names, marks, emblems and images are registered trademarks of their respective owners.
+
+Free Software Disclaimer
+
+This program is free software. It comes without any warranty, to the extent permitted by applicable law. You can redistribute it and/or modify it under the terms of Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 </body>
 </html>
 
