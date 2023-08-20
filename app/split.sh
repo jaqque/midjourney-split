@@ -15,11 +15,17 @@ convert \
   "$filename" \
   "$filehash/IMG_$filehash-%d.png"
 
+img="$(echo "$filehash/"*0.*)"
+for filter in $(mogrify -list filter); do
+cp $img ${img%.png}-$filter.png
 mogrify \
   -units PixelsPerInch \
   -density 300 \
   -resize 4096x4096 \
-  "$filehash/"*
+  -filter "$filter" \
+  ${img%.png}-$filter.png
+done
+
 
 zip -qr $filehash.zip $filehash
 
