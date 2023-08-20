@@ -55,13 +55,91 @@ end
 __END__
 
 @@ index
+<!DOCTYPE html>
 <html>
-<title>convert</title>
+<head>
+<title>Ninja Slice | Serving Up Tasty Eats</title>
+<meta charset="utf-8">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Comic Neue">
+<style>
+body {
+font-family: Comic Neue;
+background-color: black;
+}
+
+h1 {
+color: white;
+text-align: center;
+text-transform: uppercase;
+font-size: 60px;
+}
+
+h2 {
+color: purple;
+text-align: center;
+font-size: 30px;
+margin: 25px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: purple;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Comic Neue;
+  font-size: 20px;
+}
+
+input[type=submit]:hover {
+  background-color: #e6b800;
+  font-family: Comic Neue;
+}
+
+div.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+</style>
+</head>
 <body>
-<form action='/convert/'>
-  <label for='midj'>URI of Midjourney Image:</label>
+<img src="https://whimberrypress.com/wp-content/uploads/2023/08/ninja-slice.png" alt="ninja-slice" width="512" height="512">
+<img src="https://whimberrypress.com/wp-content/uploads/2023/08/Ninja-Slice-Ultimate.gif" alt="ninja-slice" width="1258" height="250">
+
+<h2>Enter your MidJourney link below.</h2>
+
+<div class="container">
+  <form action='/convert/'>
+    <label for='midj'>URI of Midjourney Image:</label>
   <input type='text' id='midj' name='midj'>
-</form>
+
+    <input type="submit" value="Submit">
+  </form>
+
+</div>
 </body>
 </html>
 
