@@ -1,3 +1,3 @@
 #!/bin/sh
 
-podman run --publish 4567:4567 -v .:/app -it app
+podman run --rm --publish 4567:4567 -v .:/app -it app
