@@ -30,6 +30,8 @@ get '/convert/' do
       end
     rescue NoMethodError
       # no-op
+    rescue URI::InvalidURIError
+      # no-op
     end
   end
   if files.count == 0 then
