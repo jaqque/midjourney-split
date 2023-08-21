@@ -1,3 +1,3 @@
 #!/bin/sh
 
-podman build -t app .
+podman build -t ninja-slice .

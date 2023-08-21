@@ -10,4 +10,4 @@ podman run \
   --publish 4567:4567 \
   --name ninja-slice \
   "$@" \
-  app
+  ninja-slice
