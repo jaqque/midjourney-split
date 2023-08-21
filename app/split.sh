@@ -1,31 +1,42 @@
-#!/bin/sh
+#!/bin/bash
 
-set -e
+set -euo pipefail
 
-filename="$1"
-filehash="$2"
+filter='Sinc' # default filter
+filehash="mktemp --dry-run XXXXXXX" # https://stackoverflow.com/a/71587919
+while getopts 'd:h:f:' OPT; do
+  case "$OPT" in
+    d) workdir="$OPTARG" ;;
+    h) filehash="$OPTARG" ;;
+    f) filter="$OPTARG" ;;
+  esac
+done
+shift "$(($OPTIND -1))"
 
-cd "$(dirname $1)"
+cd "$workdir"
 mkdir "$filehash"
 
-convert \
-  -crop 2x2@ \
-  +repage \
-  +adjoin \
-  "$filename" \
-  "$filehash/IMG_$filehash-%d.png"
+counter=0
+for filename in *; do
+  [ -f $filename ] || continue
 
-img="$(echo "$filehash/"*0.*)"
-for filter in $(mogrify -list filter); do
-cp $img ${img%.png}-$filter.png
+  : $(( counter++ ))
+  c=$(printf '%02d' $(( counter )))
+
+  convert \
+    -crop 2x2@ \
+    +repage \
+    +adjoin \
+    "$filename" \
+    "$filehash/IMG_${c}_$filehash-%d.png"
+done
+
 mogrify \
   -units PixelsPerInch \
   -density 300 \
   -resize 4096x4096 \
   -filter "$filter" \
-  ${img%.png}-$filter.png
-done
-
+  "$filehash/"*
 
 zip -qr $filehash.zip $filehash
 
