@@ -17,15 +17,26 @@ get '/convert/' do
   urls = params['midj']
   temp_dir = `mktemp -d`.chomp
   files=[]
+
   urls.each_line do |url|
     url.strip!
     # download file https://stackoverflow.com/a/29743469
     # avoid falling back to Kernel.open() https://stackoverflow.com/questions/263536/open-an-io-stream-from-a-local-file-or-url#comment92201328_264239
-    URI.parse(url).open do |f|
-      filename = File.basename(URI.parse(url).path)
-      IO.copy_stream(f, "#{temp_dir}/#{filename}")
-      files.append(filename)
+    begin
+      URI.parse(url).open do |f|
+        filename = File.basename(URI.parse(url).path)
+        IO.copy_stream(f, "#{temp_dir}/#{filename}")
+        files.append(filename)
+      end
+    rescue NoMethodError
+      # no-op
     end
+  end
+  if files.count == 0 then
+    halt 400, 'Nothing to do.'
+  end
+  if files.count > 20 then
+    halt 400, 'Too many requests.'
   end
   # randomized string https://codereview.stackexchange.com/a/15997
   filehash = Array.new(8){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
