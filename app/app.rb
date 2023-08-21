@@ -42,5 +42,5 @@ get '/convert/' do
   filehash = Array.new(8){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
   zipfile = `/app/split.sh -d "#{temp_dir}" -h "#{filehash}" -f Sinc #{ files.join(' ') }`.chomp
 
-   send_file zipfile, :disposition => :attachment
+  send_file zipfile, :disposition => :attachment
 end
