@@ -1,4 +1,5 @@
-FROM debian:latest
+FROM debian:bookworm-20230814
+# Debian 12.1
 
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install \
