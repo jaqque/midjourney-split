@@ -38,6 +38,12 @@ mogrify \
   -filter "$filter" \
   "$filehash/"*
 
+mogrify \
+  -units PixelsPerInch \
+  -density 300 \
+  -format jpg \
+  "$filehash/"* 
+
 zip -qr $filehash.zip $filehash
 
 echo "$PWD/$filehash.zip"
