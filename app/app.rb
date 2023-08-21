@@ -28,9 +28,7 @@ get '/convert/' do
         IO.copy_stream(f, "#{temp_dir}/#{filename}")
         files.append(filename)
       end
-    rescue NoMethodError
-      # no-op
-    rescue URI::InvalidURIError
+    rescue NoMethodError, URI::InvalidURIError
       # no-op
     end
   end
