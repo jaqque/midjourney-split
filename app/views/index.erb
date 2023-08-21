@@ -4,7 +4,7 @@
 <title>Ninja Slice | Serving Up Tasty Eats</title>
 <meta charset="utf-8">
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Comic Neue">
+          href="css/Comic-Neue.css">
 <style>
 body {
 font-family: Comic Neue;
@@ -43,7 +43,7 @@ input[type=text], select {
 }
 
 input[type=submit] {
-  width: 100%;
+  width: 49%;
   background-color: purple;
   color: white;
   padding: 14px 20px;
@@ -57,6 +57,24 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #e6b800;
+  font-family: Comic Neue;
+}
+
+input[type=reset] {
+  width: 49%;
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Comic Neue;
+  font-size: 20px;
+}
+
+input[type=reset]:hover {
+  background-color: blue;
   font-family: Comic Neue;
 }
 
@@ -75,10 +93,11 @@ div.container {
 
 <div class="container">
   <form action='/convert/' method='post' target='_blank'>
-    <label for='midj'>URI of Midjourney Image:</label>
+    <label for='midj'>URI of Midjourney Image(s):</label>
     <textarea id='midj' name='midj' rows='10' cols='100' wrap='soft'></textarea>
+    <br /><em>Up to twenty(20) URIs per submission is supported</em><br />
     <input type="submit" value="Submit">
-    <em>Up to twenty(20) URIs per submission is supported</em>
+    <input type="reset" value="Reset">
   </form>
 
 </div>
