@@ -1,3 +1,4 @@
 #!/bin/sh
 
-podman run --rm --publish 4567:4567 -v .:/app -it app
+set -eu
+exec "$(dirname $0)"/runme -v .:/app

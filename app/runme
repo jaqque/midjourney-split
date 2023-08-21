@@ -1,3 +1,13 @@
 #!/bin/sh
 
-podman run --rm --publish 4567:4567 -it app
+set -eu
+cd "$(dirname $0)"
+
+podman run \
+  --rm \
+  --read-only \
+  --read-only-tmpfs \
+  --publish 4567:4567 \
+  --name ninja-slice \
+  "$@" \
+  app
