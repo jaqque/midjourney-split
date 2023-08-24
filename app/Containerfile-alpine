@@ -1,0 +1,18 @@
+FROM docker.io/library/alpine:3.18.3
+
+RUN apk add --no-cache \
+  bash \
+  imagemagick \
+  ruby \
+  ruby-webrick \
+  zip
+RUN gem install --no-document \
+  sinatra \
+  ruby-rmagick
+
+COPY app.rb split.sh /app
+COPY public /app/public
+COPY views /app/views
+WORKDIR /app
+EXPOSE 4567
+CMD ruby app.rb

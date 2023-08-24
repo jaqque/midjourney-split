@@ -2,6 +2,9 @@
 require 'sinatra'
 require 'open-uri'
 require 'uri'
+require './split'
+
+#helpers Splitter
 
 set :bind, '0.0.0.0'
 
@@ -40,6 +43,9 @@ get '/convert/' do
   end
   # randomized string https://codereview.stackexchange.com/a/15997
   filehash = Array.new(8){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
+  #split_and_resize (filehash: filehash, workdir: temp_dir, images: files)
+  #split_and_resize 
+  split_and_resize (f: filehash, w: temp_dir, i: files)
   zipfile = `/app/split.sh -d "#{temp_dir}" -h "#{filehash}" -f Sinc #{ files.join(' ') }`.chomp
 
   send_file zipfile, :disposition => :attachment
