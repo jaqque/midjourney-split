@@ -1,24 +1,20 @@
-FROM debian:bookworm-20230814
-# Debian 12.1
+FROM docker.io/library/alpine:3.18.3
 
-RUN apt-get update \
-  && DEBIAN_FRONTEND=noninteractive apt-get install \
-    --assume-yes \
-    --no-install-recommends \
-    ruby \
-    imagemagick \
-    zip \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
-  # ruby-rmagick
-  # ruby-zip
-RUN gem install --no-document \
-  sinatra
-# digest-crc  # for digest/crc32
+RUN apk add --no-cache \
+  imagemagick \
+  ruby \
+  ruby-rmagick \
+  ruby-webrick
 
-COPY app.rb split.sh /app
-COPY public /app/public
-COPY views /app/views
 WORKDIR /app
+
+COPY Gemfile app.rb split.rb .
+COPY public ./public
+COPY views ./views
+
+RUN gem install \
+  --no-document \
+  --file Gemfile
+
 EXPOSE 4567
 CMD ruby app.rb
