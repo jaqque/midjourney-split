@@ -2,10 +2,7 @@
 
 require 'rmagick'
 
-#module Splitter
-helpers do
-#def split_and_resize (workdir:, images:, filehash:)
-def split_and_resize (w:, i:, f:)
+def split_and_resize (workdir:, images:, filehash:)
 
   filter=Magick::SincFilter
   corners = [
@@ -43,5 +40,4 @@ def split_and_resize (w:, i:, f:)
     end
 
   end
-end
 end
