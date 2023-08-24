@@ -4,13 +4,13 @@ RUN apk add --no-cache \
   bash \
   imagemagick \
   ruby \
+  ruby-rmagick \
   ruby-webrick \
   zip
 RUN gem install --no-document \
-  sinatra \
-  ruby-rmagick
+  sinatra
 
-COPY app.rb split.sh /app
+COPY app.rb split.rb /app
 COPY public /app/public
 COPY views /app/views
 WORKDIR /app
