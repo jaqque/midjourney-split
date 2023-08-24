@@ -35,7 +35,7 @@ def split_and_resize (workdir:, images:, filehash:)
       output=img.crop(corner, input_x, input_y)
       output.resize!(output_x, output_y, filter=filter)
       output_formats.each do |format|
-        output.write("#{workdir}/#{filehash}/IMG_#{c}-#{filehash}-#{index}.#{format}")
+        output.write("#{workdir}/#{filehash}/IMG_#{filehash}-#{c}-#{index}.#{format}")
       end
     end
 
