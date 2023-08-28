@@ -56,6 +56,7 @@ get '/convert/' do
       zip.add("#{filehash}/#{file}", File.join("#{temp_dir}/#{filehash}", file))
     end
   end
+  FileUtils.rm_rf("#{temp_dir}/#{filehash}/")
 
   send_file zipfile, :disposition => :attachment
 end
