@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require 'rmagick'
+require 'fileutils'
 
 def split_and_resize (workdir:, images:, filehash:)
 
@@ -38,6 +39,6 @@ def split_and_resize (workdir:, images:, filehash:)
         output.write("#{workdir}/#{filehash}/IMG_#{filehash}-#{c}-#{index}.#{format}")
       end
     end
-
+    FileUtils.mv("#{workdir}/#{image}", "#{workdir}/#{filehash}/IMG_#{filehash}-#{c}" + File.extname(image))
   end
 end
