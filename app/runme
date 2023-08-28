@@ -29,6 +29,7 @@ fi
 container_engine run \
   --rm \
   --read-only \
+  --tmpfs /tmp \
   --publish 4567:4567 \
   --name ninja-slice \
   $extra_opts \
