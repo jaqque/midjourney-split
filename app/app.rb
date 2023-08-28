@@ -23,7 +23,7 @@ get '/convert/' do
   temp_dir = `mktemp -d`.chomp
   files=[]
 
-  urls.each_line do |url|
+  urls.split.each do |url|
     url.strip!
     # download file https://stackoverflow.com/a/29743469
     # avoid falling back to Kernel.open() https://stackoverflow.com/questions/263536/open-an-io-stream-from-a-local-file-or-url#comment92201328_264239
