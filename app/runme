@@ -3,18 +3,34 @@
 set -eu
 cd "$(dirname "$0")"
 
+container_engine() {
+  if command -v podman >/dev/null 2>&1; then
+    podman "$@";
+  elif command -v docker >/dev/null 2>&1; then
+    docker "$@"
+  else
+    echo 'Unable to find a suitable container engine.'
+    # shellcheck disable=SC2016
+    echo 'Please ensure "pdoman" or "docker" is installed an in your $PATH'
+    exit 1
+  fi
+}
+
+cd "$(dirname "$0")"
+
 extra_opts=''
 
-if [ "$1" = --d- ] || [ "$1" = '--dev' ]; then
-  extra_opts='-v .:/app'
+if [ "${1:-}" = '-d' ] || [ "${1:-}" = '--dev' ]; then
+  shift
+  extra_opts="--volume=$PWD:/app"
 fi
 
-podman run \
+# shellcheck disable=SC2086 word splitting is intentional
+container_engine run \
   --rm \
   --read-only \
-  --read-only-tmpfs \
   --publish 4567:4567 \
   --name ninja-slice \
-  "$extra_opts" \
+  $extra_opts \
   "$@" \
   ninja-slice
