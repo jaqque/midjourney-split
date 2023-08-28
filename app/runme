@@ -1,7 +1,13 @@
 #!/bin/sh
 
 set -eu
-cd "$(dirname $0)"
+cd "$(dirname "$0")"
+
+extra_opts=''
+
+if [ "$1" = --d- ] || [ "$1" = '--dev' ]; then
+  extra_opts='-v .:/app'
+fi
 
 podman run \
   --rm \
@@ -9,5 +15,6 @@ podman run \
   --read-only-tmpfs \
   --publish 4567:4567 \
   --name ninja-slice \
+  "$extra_opts" \
   "$@" \
   ninja-slice
