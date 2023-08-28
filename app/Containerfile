@@ -8,7 +8,7 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-COPY Gemfile app.rb split.rb .
+COPY Gemfile app.rb split.rb ./
 COPY public ./public
 COPY views ./views
 

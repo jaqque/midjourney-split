@@ -23,7 +23,7 @@ get '/convert/' do
   temp_dir = `mktemp -d`.chomp
   files=[]
 
-  urls.each_line do |url|
+  urls.split.each do |url|
     url.strip!
     # download file https://stackoverflow.com/a/29743469
     # avoid falling back to Kernel.open() https://stackoverflow.com/questions/263536/open-an-io-stream-from-a-local-file-or-url#comment92201328_264239
@@ -56,6 +56,7 @@ get '/convert/' do
       zip.add("#{filehash}/#{file}", File.join("#{temp_dir}/#{filehash}", file))
     end
   end
+  FileUtils.rm_rf("#{temp_dir}/#{filehash}/")
 
   send_file zipfile, :disposition => :attachment
 end
