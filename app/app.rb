@@ -2,6 +2,11 @@
 require 'sinatra'
 require 'open-uri'
 require 'uri'
+require 'zip'
+require './split'
+
+# sorted zipfiles look nicer
+::Zip.sort_entries = true
 
 set :bind, '0.0.0.0'
 
@@ -38,9 +43,19 @@ get '/convert/' do
   if files.count > 20 then
     halt 400, 'Too many requests.'
   end
+
   # randomized string https://codereview.stackexchange.com/a/15997
   filehash = Array.new(8){[*'0'..'9', *'a'..'z', *'A'..'Z'].sample}.join
-  zipfile = `/app/split.sh -d "#{temp_dir}" -h "#{filehash}" -f Sinc #{ files.join(' ') }`.chomp
+  split_and_resize(filehash: filehash, workdir: temp_dir, images: files)
+
+  # Zip them up
+  zipfile = "#{temp_dir}/#{filehash}.zip"
+  Zip::File.open(zipfile, create: true) do |zip|
+    basedir = "#{temp_dir}/#{filehash}"
+    Dir.glob('*', base: basedir).each do |file|
+      zip.add("#{filehash}/#{file}", File.join("#{temp_dir}/#{filehash}", file))
+    end
+  end
 
   send_file zipfile, :disposition => :attachment
 end
